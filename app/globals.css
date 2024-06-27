@@ -2,32 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+.signup-border {
+  @apply rounded-3xl;
+  position: relative;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.signup-border::before {
+  content: "";
+  position: absolute;
+  top: -3px; /* Adjust the offset based on the border width */
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  background: linear-gradient(180deg, #ff9900 0%, #072951 100%);
+  border-radius: inherit;
+  z-index: -1;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.hero {
+  @apply relative w-full h-screen bg-cover bg-center bg-no-repeat;
+  background-image: url("./../img/sky-bg.jpeg");
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.hero::before {
+  content: "";
+  @apply absolute top-0 left-0 w-full h-full;
+  background: #072951a6;
+  z-index: 1;
 }
